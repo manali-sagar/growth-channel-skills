@@ -1,0 +1,12 @@
+{
+  "name": "growth-channel-skills",
+  "description": "Growth and acquisition skills for freemium and subscription products: growth planning from a revenue goal and referral program design. By Manali Hanamsagar, Small Table Studio.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Manali Hanamsagar",
+    "url": "https://manalihanamsagar.com/smalltablestudio"
+  },
+  "homepage": "https://manalihanamsagar.com/smalltablestudio",
+  "license": "CC-BY-4.0",
+  "keywords": ["growth", "acquisition", "referral", "growth-model", "rice", "subscription", "freemium", "gtm"]
+}
