@@ -22,6 +22,8 @@ By Manali Hanamsagar, Small Table Studio. Built for freemium and subscription pr
 6. **Split by platform** (e.g., app vs. web): separate baselines and targets, blended with an explicit weighting you update as the real mix becomes clear.
 7. **Find the activation anchor:** the one product moment that predicts return. Everything in the strategy serves getting more users to that moment.
 
+**No retention data?** Ask the company to pull it. If they can't, skip steps 4 and 7, model conversion straight from signups to paid, and flag that the retention diagnosis was skipped. Don't estimate retention or guess an anchor.
+
 ## 2. Channel selection
 
 **Criteria for each channel**
@@ -80,6 +82,34 @@ When the gap is large, name the levers that close it: higher conversion, higher 
 5. Revenue by channel (attributed by each channel's share of signups)
 
 **Color convention:** blue = input, black = formula, yellow = key input or needs action, orange = gap or flag.
+
+## 3b. Channel-driven growth curves
+
+The total growth curve isn't an assumption; it's the sum of each channel's own curve. Each channel grows for different reasons, on a different timeline, and hits limits at different points. Model them separately, then add them up.
+
+**Total signups(t) = organic(t) + referral(t) + SEO(t) + paid(t) + creators(t) + other channels(t), × seasonality(t)**
+
+Every parameter below comes from the company's own data. Where a parameter is missing, mark it as a placeholder, run the channel conservatively, and say how to measure it.
+
+| Channel | Driver | Curve shape | Formula (per month t) | Parameters to get from the company |
+|---|---|---|---|---|
+| **Organic / word of mouth** | Size of the active user base | Grows with retention; flat if retention is flat | organic(t) = baseline + rate × active users(t−1) | Historical organic signups vs. active users |
+| **Referral loop** | Retained users who share | Compounds if retention holds; cycle time sets speed | referral(t) = active users(t−cycle) × participation % × invites per participant × invite conversion % | Participation, invites, invite conversion, cycle time |
+| **SEO / GEO** | Content published and authority | Near zero for the first ~1–3 months, then an S-curve that compounds | SEO(t) = Σ over pages live: mature traffic per page × ramp(page age) × signup conversion | Content per month, traffic per mature page, signup conversion from organic, how long their past pages took to rank |
+| **Paid** | Budget | Diminishing returns: each extra dollar buys fewer users | paid(t) = spend(t) ÷ marginal CAC(spend); marginal CAC rises in tiers as spend grows, up to a saturation cap | CAC at current spend; CAC observed at higher spend levels; audience size |
+| **Creators / partners** | Activations per month | A spike when content goes live, then a tail | creators(t) = Σ activations: signups per activation × decay(months since post) | Signups per creator from past seeding; how fast results decay; capacity to manage creators |
+| **Lifecycle** | Inactive users brought back | Adds to active users, not signups | active(t) = retained(t) + new(t) + resurrected(t) | Reactivation rate from past win-back emails |
+
+**Rules**
+- **Retention multiplies everything downstream.** Organic and referral both scale with the active base, so a retention fix lifts three curves at once. That's why retention comes before acquisition.
+- **Gate every channel.** A channel starts only when its dependency or go/no-go criterion is met (e.g., paid only after the go/no-go triggers). If a milestone slips, shift the channel's curve.
+- **Cap every channel** by team capacity (pieces of content, creators managed) and budget.
+- **Don't assume new SEO content ranks within 90 days.** Rankings mature over one to three quarters; model new content conservatively.
+- **Use marginal CAC, not average CAC, for paid.** Average CAC blends cheap early customers with expensive later ones and hides the slowdown.
+- **Seasonality:** apply monthly multipliers only if the company's own history shows a pattern.
+- **Required path:** scale the plan's channel mix up to the required end-month signups. The gap then reads as "each channel would need to be Nx bigger," which makes the size of the problem concrete.
+
+Research behind these curve shapes: growth accounting ([Amplitude](https://amplitude.com/blog/growth-accounting)), diminishing returns in paid ([Recast](https://getrecast.com/diminishing-returns/), [GrowthMarketer on marginal CAC](https://growthmarketer.com/blog/blended-vs-marginal-cac/)), SEO ramp and compounding ([AirOps](https://www.airops.com/blog/forecast-seo-roi)), and referral loop math ([Saxifrage](https://www.saxifrage.xyz/post/viral-growth-loops)).
 
 ## 4. Roadmap
 
