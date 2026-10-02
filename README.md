@@ -25,7 +25,14 @@ More channel skills are on the way. Each includes the full method in `references
 3. Start a chat and ask, for example: *"Build a growth plan to get us to $1M ARR in 12 months"* and share your numbers.
 
 ### Claude Code
-Copy any folder from [`skills`](skills) into `~/.claude/skills/`.
+Install as a plugin from the Small Table Studio collection:
+
+```
+/plugin marketplace add manali-sagar/plg-for-ai-products
+/plugin install growth-channel-skills@small-table-studio
+```
+
+Or copy any folder from [`skills`](skills) into `~/.claude/skills/`.
 
 ## How to get the most out of them
 
